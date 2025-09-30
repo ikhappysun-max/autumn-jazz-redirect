@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting...</title>
+    <title>Осень и Джаз - Redirecting...</title>
     <meta charset="UTF-8">
     <script>
-        const mobileLink = "https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Untitled?node-id=1-2&scaling=scale-down";
-        const desktopLink = "https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Untitled?node-id=0-1&scaling=contain";
-        
-        if (window.innerWidth <= 768) {
-            window.location.href = mobileLink;
-        } else {
-            window.location.href = desktopLink;
+        function isMobileDevice() {
+            // Несколько методов определения мобильного устройства
+            return (
+                window.innerWidth <= 768 || 
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                (typeof window.orientation !== "undefined") || 
+                (navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
+            );
         }
+
+        function redirect() {
+            const mobileLink = "https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Postober_ОсеньИДжаз_Лендинг?node-id=18-135&t=4SHyY92ppjF2x6iS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A135&show-proto-sidebar=1";
+            const desktopLink = "https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Postober_ОсеньИДжаз_Лендинг?node-id=3-2&t=4SHyY92ppjF2x6iS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1";
+            
+            if (isMobileDevice()) {
+                console.log("Mobile device detected - redirecting to mobile version");
+                window.location.href = mobileLink;
+            } else {
+                console.log("Desktop device detected - redirecting to desktop version");
+                window.location.href = desktopLink;
+            }
+        }
+
+        // Запускаем редирект при загрузке страницы
+        window.onload = redirect;
     </script>
 </head>
 <body style="background: #FFF8E7; color: #2C1B15; font-family: Arial; text-align: center; padding: 50px;">
     <h1>🎷 Осень и Джаз</h1>
-    <p>Перенаправление на нужную версию...</p>
+    <p>Определяем устройство и перенаправляем...</p>
+    <p>Если редирект не сработал:</p>
+    <a href="https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Postober_ОсеньИДжаз_Лендинг?node-id=18-135&t=4SHyY92ppjF2x6iS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A135&show-proto-sidebar=1" style="color: #8C2F2F;">Мобильная версия</a> | 
+    <a href="https://www.figma.com/proto/O9WwlMywbjvv63DD5aE8aw/Postober_ОсеньИДжаз_Лендинг?node-id=3-2&t=4SHyY92ppjF2x6iS-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" style="color: #8C2F2F;">Десктоп версия</a>
 </body>
 </html>
